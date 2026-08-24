@@ -49,8 +49,8 @@ export function UploadForm() {
           onDrop={(event) => { event.preventDefault(); setIsDragging(false); acceptFiles(event.dataTransfer.files); }}
           onClick={() => inputRef.current?.click()}
         >
-          <span className="upload-kicker">01 / Upload</span>
-          <strong>{isDragging ? 'Release to inspect' : 'Drop your image here'}</strong>
+          <span className="upload-kicker">01 — UPLOAD</span>
+          <strong>{isDragging ? 'Release to inspect' : 'Drop a photo, screenshot, or supporting image.'}</strong>
           <span>or click to browse</span>
           <small>JPEG / PNG / WebP / TIFF · MAX 10MB</small>
           <input ref={inputRef} id="image" name="image" type="file" accept="image/jpeg,image/png,image/webp,image/tiff" required onChange={(event) => acceptFiles(event.target.files)} />

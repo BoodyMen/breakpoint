@@ -1,33 +1,16 @@
 import { UploadForm } from '@/components/upload-form';
-import { SkeletonIcon } from '@/components/skeleton-icon';
+import { ArrowIcon, BreakpointWordmark, CheckIcon, DoxerBadge, MascotIcon, SkeletonSurfer } from '@/components/brand';
+
+const features = [['Independent analysis', 'Multiple models inspect the image independently before BREAKPOINT compares their conclusions.'], ['Evidence trail', 'See the observations, sources, uncertainty, and contradictions behind every location result.'], ['Designed for public places', 'Built to identify locations and media origins — never to identify, track, or profile private people.']];
 
 export default function Home() {
-  return (
-    <main className="landing-shell">
-      <div className="topline"><span>BREAKPOINT / FIELD NOTES 001</span><span>OPEN TO EVERYONE</span></div>
-      <section className="hero-section">
-        <div className="hero-copy">
-          <p className="eyebrow"><span className="status-dot" /> Surf spot intelligence</p>
-          <h1><span>BREAK</span>POINT</h1>
-          <p className="hero-tagline">DEATH TO THE DOXERS.</p>
-          <p className="hero-description">Find where the wave was photographed. Chase better waves, share the stoke, and make surfing easier to enter.</p>
-        </div>
-        <div className="hero-mark"><SkeletonIcon /><span>01 / 03</span></div>
-      </section>
-      <section className="investigation-section">
-        <div className="section-label"><span>Start here</span><span>Drop a frame. Find a line.</span></div>
-        <UploadForm />
-      </section>
-      <section className="feature-section">
-        <div className="section-label"><span>How it works</span><span>Signal over noise</span></div>
-        <div className="feature-grid">
-          <article><span className="feature-number">01</span><h2>See the spot</h2><p>Three independent vision models read the coast, the light, the built world, and the details in between.</p></article>
-          <article><span className="feature-number">02</span><h2>Compare the clues</h2><p>Coordinates, confidence, evidence, and disagreement stay visible so every guess can be challenged.</p></article>
-          <article><span className="feature-number">03</span><h2>Go surf</h2><p>Turn a mystery frame into a starting point for your next session, wherever you are in the lineup.</p></article>
-        </div>
-      </section>
-      <div className="ticker" aria-hidden="true"><span>FIND THE SPOT</span><span>SHARE THE STOKE</span><span>SURFING IS FOR EVERYONE</span><span>FIND THE SPOT</span></div>
-      <footer><span>BREAKPOINT © 2026</span><span>BUILT FOR THE NEXT WAVE</span><a href="https://github.com/BoodyMen/breakpoint">GITHUB ↗</a></footer>
-    </main>
-  );
+  return <main className="site-shell">
+    <header className="site-header"><BreakpointWordmark size="sm" /><nav aria-label="Primary navigation"><a href="#how-it-works">How it works</a><a href="#safety">Safety</a><a href="#privacy">Privacy</a><a className="header-cta" href="#investigate">Start investigation <ArrowIcon /></a></nav></header>
+    <section className="hero" aria-labelledby="hero-title"><div className="hero-content"><BreakpointWordmark size="lg" showTagline /><h1 id="hero-title">Image geolocation,<br /><em>without the creep factor.</em></h1><p className="hero-lede">Upload a photo. Follow the evidence. Find the spot.</p><div id="investigate" className="upload-card"><UploadForm /><p className="safety-microcopy">Find the place. Protect the people.</p></div></div><div className="hero-illustration"><span className="coordinate-stamp">SURF / 001<br />PUBLIC PLACE RESEARCH</span><SkeletonSurfer className="surfer-art" /><span className="pin-stamp">● 38°43′N<br />● 009°08′W</span></div></section>
+    <section className="trust-row" aria-label="Trust information">{['No account required', 'Evidence, not guesswork', 'Automatic 30-day deletion'].map((item) => <div key={item}><CheckIcon /><span>{item}</span></div>)}</section>
+    <section id="how-it-works" className="section-block"><div className="section-heading"><span className="section-kicker">WHY BREAKPOINT</span><h2>Curiosity, with a paper trail.</h2><p>Location research should be useful, legible, and grounded in what can actually be seen.</p></div><div className="feature-grid">{features.map(([title, description], index) => <article className="feature-card" key={title}><span className="feature-index">0{index + 1}</span><MascotIcon className="feature-icon" decorative /><h3>{title}</h3><p>{description}</p></article>)}</div></section>
+    <section className="workflow section-block"><div className="section-heading"><span className="section-kicker">THE ROUTE</span><h2>From frame to coastline.</h2></div><div className="workflow-grid">{[['01 — UPLOAD', 'Drop a photo, screenshot, or supporting image.'], ['02 — INVESTIGATE', 'BREAKPOINT extracts visible clues and compares independent analyses.'], ['03 — FIND THE SPOT', 'Review the map, evidence trail, confidence, and alternative locations.']].map(([label, text]) => <article key={label}><span className="workflow-label">{label}</span><ArrowIcon /><p>{text}</p></article>)}</div></section>
+    <section id="safety" className="campaign"><DoxerBadge className="badge-art" /><div><span className="section-kicker">A SMALL RULE WITH A BIG JOB</span><h2>Find the place.<br />Protect the people.</h2><p>BREAKPOINT is designed for public-place and media-origin research. It does not identify or track private people.</p></div></section>
+    <footer id="privacy"><BreakpointWordmark size="sm" /><span>BREAKPOINT © 2026</span><a href="#privacy">Privacy</a><a href="#safety">Safety</a><a href="/api/reports">Report abuse</a></footer>
+  </main>;
 }

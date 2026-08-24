@@ -1,0 +1,2 @@
+export function CheckIcon() { return <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="var(--bp-purple-soft)" /><path d="m6 10 3 3 5-6" stroke="var(--bp-purple)" strokeWidth="2" fill="none" /></svg>; }
+export function ArrowIcon() { return <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13m-5-5 5 5-5 5" stroke="currentColor" strokeWidth="1.6" fill="none" /></svg>; }
