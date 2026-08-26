@@ -1,5 +1,5 @@
 import { UploadForm } from '@/components/upload-form';
-import { ArrowIcon, BreakpointWordmark, CheckIcon, DoxerBadge, MascotIcon, SkeletonSurfer } from '@/components/brand';
+import { ArrowIcon, BreakpointWordmark, CheckIcon, MascotIcon, SkeletonSurfer, SwellBadge } from '@/components/brand';
 
 const features = [['Independent analysis', 'Multiple models inspect the image independently before BREAKPOINT compares their conclusions.'], ['Evidence trail', 'See the observations, sources, uncertainty, and contradictions behind every location result.'], ['Designed for public places', 'Built to identify locations and media origins — never to identify, track, or profile private people.']];
 
@@ -10,7 +10,7 @@ export default function Home() {
     <section className="trust-row" aria-label="Trust information">{['No account required', 'Evidence, not guesswork', 'Automatic 30-day deletion'].map((item) => <div key={item}><CheckIcon /><span>{item}</span></div>)}</section>
     <section id="how-it-works" className="section-block"><div className="section-heading"><span className="section-kicker">WHY BREAKPOINT</span><h2>Curiosity, with a paper trail.</h2><p>Location research should be useful, legible, and grounded in what can actually be seen.</p></div><div className="feature-grid">{features.map(([title, description], index) => <article className="feature-card" key={title}><span className="feature-index">0{index + 1}</span><MascotIcon className="feature-icon" decorative /><h3>{title}</h3><p>{description}</p></article>)}</div></section>
     <section className="workflow section-block"><div className="section-heading"><span className="section-kicker">THE ROUTE</span><h2>From frame to coastline.</h2></div><div className="workflow-grid">{[['01 — UPLOAD', 'Drop a photo, screenshot, or supporting image.'], ['02 — INVESTIGATE', 'BREAKPOINT extracts visible clues and compares independent analyses.'], ['03 — FIND THE SPOT', 'Review the map, evidence trail, confidence, and alternative locations.']].map(([label, text]) => <article key={label}><span className="workflow-label">{label}</span><ArrowIcon /><p>{text}</p></article>)}</div></section>
-    <section id="safety" className="campaign"><DoxerBadge className="badge-art" /><div><span className="section-kicker">A SMALL RULE WITH A BIG JOB</span><h2>Find the place.<br />Protect the people.</h2><p>BREAKPOINT is designed for public-place and media-origin research. It does not identify or track private people.</p></div></section>
+    <section id="safety" className="campaign"><SwellBadge className="badge-art" /><div><span className="section-kicker">A SMALL RULE WITH A BIG JOB</span><h2>Find the place.<br />Protect the people.</h2><p>BREAKPOINT is designed for public-place and media-origin research. It does not identify or track private people.</p></div></section>
     <footer id="privacy"><BreakpointWordmark size="sm" /><span>BREAKPOINT © 2026</span><a href="#privacy">Privacy</a><a href="#safety">Safety</a><a href="/api/reports">Report abuse</a></footer>
   </main>;
 }
