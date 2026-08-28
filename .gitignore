@@ -7,3 +7,6 @@ out/
 /storage/
 *.log
 *.tsbuildinfo
+
+# local smoke-test asset
+/test-image.jpg

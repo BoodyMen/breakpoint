@@ -1,18 +1,21 @@
 'use client';
 
 import Script from 'next/script';
+import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
+import { saveLastRun } from '@/lib/last-run';
 import { LANDING_HTML, LANDING_SCRIPT } from './landing-markup';
 
 // The landing page is a near-verbatim port of the BREAKPOINT design artifact
 // (claude.ai/code/artifact/d309027c). The markup and the presentational script
 // (live clock, marquee, scroll reveals) come straight from the artifact; the only
-// functional change here is turning the hero "deck" into a real uploader wired to
-// POST /api/analyze/all.
+// functional change is turning the hero "deck" into a real uploader that runs the
+// analysis and hands off to /investigation.
 export function Landing() {
   const rootRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
   const [error, setError] = useState<string | null>(null);
-  const [result, setResult] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -47,7 +50,7 @@ export function Landing() {
         return;
       }
       setError(null);
-      setResult(null);
+      setBusy(true);
       if (label) label.textContent = 'Analysing…';
       deck.setAttribute('aria-busy', 'true');
       try {
@@ -56,16 +59,21 @@ export function Landing() {
         const res = await fetch('/api/analyze/all', { method: 'POST', body });
         const payload = await res.json();
         if (!res.ok) throw new Error(payload.error ?? 'Analysis failed.');
-        setResult(JSON.stringify(payload, null, 2));
-        document.getElementById('procedure')?.scrollIntoView({ behavior: 'smooth' });
+        saveLastRun({
+          candidates: payload.candidates ?? [],
+          consensus: payload.consensus,
+          image: payload.image
+        });
+        router.push('/investigation');
       } catch (caught) {
         setError(caught instanceof Error ? caught.message : 'Analysis failed.');
+        setBusy(false);
       } finally {
         if (label) label.textContent = idleText;
         deck.removeAttribute('aria-busy');
         input.value = '';
       }
-    }
+    };
 
     const openPicker = () => input.click();
     const onKey = (event: KeyboardEvent) => {
@@ -107,16 +115,24 @@ export function Landing() {
       deck.removeEventListener('drop', onDrop);
       input.remove();
     };
-  }, []);
+  }, [router]);
 
   return (
     <>
       <div ref={rootRef} dangerouslySetInnerHTML={{ __html: LANDING_HTML }} />
-      {(error || result) && (
+      {error && (
         <section className="run-output wrap" aria-live="polite">
-          {error && <p className="run-error">{error}</p>}
-          {result && <pre className="run-json">{result}</pre>}
+          <p className="run-error">{error}</p>
         </section>
+      )}
+      {busy && (
+        <div className="scan-overlay" role="status" aria-live="assertive">
+          <div className="scan-box">
+            <span className="scan-sweep" aria-hidden="true" />
+            <div className="scan-label">ANALYSING</div>
+            <p className="scan-sub">Three models are reading the frame independently. This takes a few seconds.</p>
+          </div>
+        </div>
       )}
       <Script id="breakpoint-landing-fx" strategy="afterInteractive">
         {LANDING_SCRIPT}
