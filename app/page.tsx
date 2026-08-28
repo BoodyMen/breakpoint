@@ -1,16 +1,5 @@
-import { UploadForm } from '@/components/upload-form';
-import { ArrowIcon, BreakpointWordmark, CheckIcon, MascotIcon, SkeletonSurfer, SwellBadge } from '@/components/brand';
-
-const features = [['Independent analysis', 'Multiple models inspect the image independently before BREAKPOINT compares their conclusions.'], ['Evidence trail', 'See the observations, sources, uncertainty, and contradictions behind every location result.'], ['Built for spot hunting', 'Made to pin down surf breaks and the coastline around them from a single clip.']];
+import { Landing } from '@/components/landing';
 
 export default function Home() {
-  return <main className="site-shell">
-    <header className="site-header"><BreakpointWordmark size="sm" /><nav aria-label="Primary navigation"><a href="#how-it-works">How it works</a><a href="#safety">Manifesto</a><a className="header-cta" href="#investigate">Start investigation <ArrowIcon /></a></nav></header>
-    <section className="hero" aria-labelledby="hero-title"><div className="hero-content"><BreakpointWordmark size="lg" showTagline /><h1 id="hero-title">Find the <em>break.</em></h1><p className="hero-lede">Upload a photo. Follow the evidence. Find the spot.</p><div id="investigate" className="upload-card"><UploadForm /><p className="safety-microcopy">Drop a clip. Find the break.</p></div></div><div className="hero-illustration"><span className="coordinate-stamp">SURF / 001<br />SPOT FINDER</span><SkeletonSurfer className="surfer-art" /><span className="pin-stamp">● 38°43′N<br />● 009°08′W</span></div></section>
-    <section className="trust-row" aria-label="Trust information">{['No account required', 'Evidence, not guesswork', 'Automatic 30-day deletion'].map((item) => <div key={item}><CheckIcon /><span>{item}</span></div>)}</section>
-    <section id="how-it-works" className="section-block"><div className="section-heading"><span className="section-kicker">WHY BREAKPOINT</span><h2>Chase the wave, not the guesswork.</h2><p>Every spot comes from what is actually in the frame: the coastline, the swell, and the light on the water.</p></div><div className="feature-grid">{features.map(([title, description], index) => <article className="feature-card" key={title}><span className="feature-index">0{index + 1}</span><MascotIcon className="feature-icon" decorative /><h3>{title}</h3><p>{description}</p></article>)}</div></section>
-    <section className="workflow section-block"><div className="section-heading"><span className="section-kicker">THE ROUTE</span><h2>From frame to coastline.</h2></div><div className="workflow-grid">{[['01 — UPLOAD', 'Drop a photo, screenshot, or supporting image.'], ['02 — INVESTIGATE', 'BREAKPOINT extracts visible clues and compares independent analyses.'], ['03 — FIND THE SPOT', 'Review the map, evidence trail, confidence, and alternative locations.']].map(([label, text]) => <article key={label}><span className="workflow-label">{label}</span><ArrowIcon /><p>{text}</p></article>)}</div></section>
-    <section id="safety" className="campaign"><SwellBadge className="badge-art" /><div><span className="section-kicker">THE MISSION</span><h2>Surfing should be<br />for everyone.</h2><p>Local knowledge, shared. Drop a clip, find the break, and make the next session yours.</p></div></section>
-    <footer id="privacy"><BreakpointWordmark size="sm" /><span>BREAKPOINT © 2026</span><a href="#how-it-works">How it works</a><a href="#safety">Manifesto</a><a href="/api/reports">Report</a></footer>
-  </main>;
+  return <Landing />;
 }
