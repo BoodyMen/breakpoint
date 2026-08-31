@@ -69,6 +69,13 @@ export default function InvestigationPage() {
 
       {run && run.candidates.length > 0 && (
         <section className="inv-body wrap">
+          {run.demo && (
+            <div className="inv-demo" role="note">
+              <strong>Sample result.</strong> No model API keys are configured, so this is a fixed
+              example — not an analysis of your photo. Add the keys in the Vercel project settings to
+              get real answers.
+            </div>
+          )}
           <div className="inv-head">
             <span className="label red">Coastal intelligence</span>
             <h1 className="h2">Where we think it is.</h1>

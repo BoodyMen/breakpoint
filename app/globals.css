@@ -454,3 +454,7 @@ section[id], span[id]{scroll-margin-top:84px}
   .cand{ flex-wrap:wrap; gap:12px }
   .cand-like{ width:auto; text-align:left }
 }
+
+.inv-demo{ margin-bottom:30px; padding:14px 18px; border:1px solid rgba(228,19,15,.4); border-radius:4px;
+  background:rgba(228,19,15,.07); color:var(--concrete); font-size:12.5px; line-height:1.55; max-width:70ch }
+.inv-demo strong{ color:var(--bone); font-weight:700 }

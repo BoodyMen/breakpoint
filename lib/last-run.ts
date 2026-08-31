@@ -7,6 +7,7 @@ export type LastRun = {
   candidates: Candidate[];
   consensus: Consensus;
   image?: { width: number; height: number; hash: string };
+  demo?: boolean;
 };
 
 export function saveLastRun(run: Omit<LastRun, 'savedAt'>) {

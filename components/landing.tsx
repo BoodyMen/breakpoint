@@ -62,7 +62,8 @@ export function Landing() {
         saveLastRun({
           candidates: payload.candidates ?? [],
           consensus: payload.consensus,
-          image: payload.image
+          image: payload.image,
+          demo: payload.demo === true
         });
         router.push('/investigation');
       } catch (caught) {
