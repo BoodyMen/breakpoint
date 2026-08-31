@@ -408,53 +408,63 @@ section[id], span[id]{scroll-margin-top:84px}
 .scan-sub{ position:relative; margin-top:12px; font-size:12.5px; line-height:1.55; color:var(--concrete) }
 @media (prefers-reduced-motion: reduce){ .scan-sweep{ animation:none } }
 
-/* ============================ INVESTIGATION ============================ */
-.inv{ min-height:100vh; background:var(--ink); color:var(--bone) }
-.inv-bar{ display:flex; align-items:center; gap:20px; max-width:var(--maxw); margin:0 auto; padding:20px 28px;
-  border-bottom:1px solid var(--hair) }
-.inv-bar .brand .word{ font-weight:700; font-size:19px; letter-spacing:-0.04em }
-.inv-bar .label{ color:var(--ash) }
-.inv-again, .inv-cta, .inv-back{ margin-left:auto; font-size:11px; letter-spacing:.18em; text-transform:uppercase;
-  font-weight:600; color:var(--ash); transition:color .18s }
-.inv-again:hover{ color:var(--bone) }
-.inv-note{ padding:40px 28px; color:var(--ash) }
+/* ============================ ANALYSIS PAGE ============================ */
+.anl{ min-height:100vh; background:var(--ink); color:var(--bone); display:flex; flex-direction:column }
+.anl-bar{ display:flex; align-items:center; gap:20px; max-width:var(--maxw); margin:0 auto; width:100%;
+  padding:20px 28px; border-bottom:1px solid var(--hair) }
+.anl-bar .brand .word{ font-weight:700; font-size:19px; letter-spacing:-0.04em }
+.anl-bar .label{ color:var(--ash) }
+.anl-again{ margin-left:auto; font-size:11px; letter-spacing:.18em; text-transform:uppercase; font-weight:600;
+  color:var(--ash); transition:color .18s }
+.anl-again:hover{ color:var(--bone) }
+.anl-note{ padding:40px 28px; color:var(--ash) }
 
-.inv-empty{ padding:clamp(60px,12vw,140px) 28px; max-width:640px }
-.inv-empty .lede{ margin-top:14px }
-.inv-cta{ display:inline-block; margin-top:26px; margin-left:0; padding:12px 18px; border:1px solid var(--red);
-  color:var(--bone); font-size:11px; letter-spacing:.18em; text-transform:uppercase; font-weight:600 }
-.inv-cta:hover{ background:rgba(228,19,15,.1) }
+.anl-empty{ padding:clamp(60px,12vw,140px) 28px; max-width:640px; flex:1 }
+.anl-empty .lede{ margin-top:14px }
+.anl-cta{ display:inline-block; margin-top:26px; padding:12px 18px; border:1px solid var(--red); color:var(--bone);
+  font-size:11px; letter-spacing:.18em; text-transform:uppercase; font-weight:600 }
+.anl-cta:hover{ background:rgba(228,19,15,.1) }
 
-.inv-body{ padding:clamp(40px,7vw,84px) 28px 110px }
-.inv-head{ max-width:660px }
-.inv-head .h2{ margin-top:12px }
-.inv-head .lede{ margin-top:16px }
+.anl-body{ padding:clamp(40px,7vw,80px) 28px 90px; flex:1 }
+.anl-demo{ margin-bottom:30px; padding:14px 18px; border:1px solid rgba(228,19,15,.4); border-radius:4px;
+  background:rgba(228,19,15,.07); color:var(--concrete); font-size:12.5px; line-height:1.55; max-width:74ch }
+.anl-demo strong{ color:var(--bone); font-weight:700 }
+.anl-head{ max-width:660px }
+.anl-head .h2{ margin-top:12px }
+.anl-head .lede{ margin-top:16px; max-width:62ch }
 
-.cand-list{ list-style:none; margin:44px 0 0; padding:0; border-top:1px solid var(--hair) }
-.cand{ display:flex; align-items:center; gap:22px; padding:22px 4px; border-bottom:1px solid var(--hair) }
-.cand-rank{ font-size:13px; font-weight:700; color:var(--ash); width:26px; flex:none }
+.anl-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:start; margin-top:42px }
+@media(max-width:900px){ .anl-grid{ grid-template-columns:1fr; gap:28px } }
+
+.cand-list{ list-style:none; margin:0; padding:0; border-top:1px solid var(--hair) }
+.cand{ display:flex; align-items:center; gap:20px; padding:20px 2px; border-bottom:1px solid var(--hair) }
+.cand-rank{ font-size:13px; font-weight:700; color:var(--ash); width:24px; flex:none }
 .cand.lead .cand-rank{ color:var(--red) }
 .cand-main{ flex:1; min-width:0 }
-.cand-name{ font-size:clamp(17px,2.2vw,22px); font-weight:700; letter-spacing:-0.02em }
-.cand-meta{ margin-top:6px; font-size:11.5px; color:var(--ash); letter-spacing:.03em }
-.cand-bar{ margin-top:12px; height:4px; background:var(--hair-2); border-radius:2px; overflow:hidden; max-width:420px }
+.cand-name{ font-size:clamp(16px,1.8vw,20px); font-weight:700; letter-spacing:-0.02em }
+.cand-meta{ margin-top:6px; font-size:11px; color:var(--ash); letter-spacing:.03em }
+.cand-bar{ margin-top:11px; height:4px; background:var(--hair-2); border-radius:2px; overflow:hidden; max-width:360px }
 .cand-bar span{ display:block; height:100%; background:var(--red) }
 .cand.lead .cand-bar span{ background:var(--red-hot) }
-.cand-like{ text-align:right; flex:none; width:74px }
-.cand-like-n{ font-size:22px; font-weight:700; letter-spacing:-0.02em }
+.cand-side{ flex:none; width:70px; text-align:right }
+.cand-like-n{ font-size:21px; font-weight:700; letter-spacing:-0.02em }
 .cand-like-k{ font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--ash); margin-top:2px }
+.cand-map-link{ display:inline-block; margin-top:9px; font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--ash); border-bottom:1px solid var(--hair-2) }
+.cand-map-link:hover{ color:var(--red); border-color:var(--red) }
 
-.cand-map{ position:relative; margin-top:34px; border:1px solid var(--hair-2); border-radius:5px; overflow:hidden }
-.cand-map iframe{ display:block; width:100%; height:min(52vh,440px); border:0; filter:grayscale(.4) contrast(1.05) brightness(.9) }
-.cand-map-cap{ position:absolute; left:12px; bottom:12px; padding:5px 9px; background:rgba(5,5,5,.8);
-  border:1px solid var(--hair-2); font-size:10px; letter-spacing:.1em; color:var(--bone) }
+.anl-locator{ margin:0; position:sticky; top:24px }
+.locator{ width:100%; height:auto; display:block; border:1px solid var(--hair-2); border-radius:5px }
+.anl-locator figcaption{ margin-top:10px; font-size:10px; letter-spacing:.04em; color:var(--ash); line-height:1.5 }
 
-.inv-fine{ margin-top:26px; color:var(--ash); line-height:1.7; max-width:60ch; text-transform:none; letter-spacing:.02em; font-weight:400; font-size:12px }
+.anl-fine{ display:block; margin-top:34px; color:var(--ash); line-height:1.7; max-width:60ch; text-transform:none;
+  letter-spacing:.02em; font-weight:400; font-size:12px }
+
+.anl-foot{ border-top:1px solid var(--hair); padding:22px 0 }
+.anl-foot .doxer-strip{ font-size:11px }
+
 @media(max-width:560px){
   .cand{ flex-wrap:wrap; gap:12px }
-  .cand-like{ width:auto; text-align:left }
+  .cand-side{ width:auto; text-align:left; display:flex; align-items:baseline; gap:10px }
+  .cand-map-link{ margin-top:0 }
 }
-
-.inv-demo{ margin-bottom:30px; padding:14px 18px; border:1px solid rgba(228,19,15,.4); border-radius:4px;
-  background:rgba(228,19,15,.07); color:var(--concrete); font-size:12.5px; line-height:1.55; max-width:70ch }
-.inv-demo strong{ color:var(--bone); font-weight:700 }

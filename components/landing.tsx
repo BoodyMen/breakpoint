@@ -10,7 +10,7 @@ import { LANDING_HTML, LANDING_SCRIPT } from './landing-markup';
 // (claude.ai/code/artifact/d309027c). The markup and the presentational script
 // (live clock, marquee, scroll reveals) come straight from the artifact; the only
 // functional change is turning the hero "deck" into a real uploader that runs the
-// analysis and hands off to /investigation.
+// analysis and hands off to /analysis.
 export function Landing() {
   const rootRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
@@ -65,7 +65,7 @@ export function Landing() {
           image: payload.image,
           demo: payload.demo === true
         });
-        router.push('/investigation');
+        router.push('/analysis');
       } catch (caught) {
         setError(caught instanceof Error ? caught.message : 'Analysis failed.');
         setBusy(false);
